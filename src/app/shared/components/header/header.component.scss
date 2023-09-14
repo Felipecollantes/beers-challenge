@@ -1,0 +1,17 @@
+header {
+    background-color: #333; /* Color de fondo del encabezado */
+    color: #fff; /* Color del texto */
+    display: flex;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .logo img {
+    max-height: 40px; /* Tamaño máximo de la imagen */
+    margin-right: 10px; /* Espacio entre la imagen y el texto */
+  }
+  
+  .title {
+    font-size: 24px; /* Tamaño del texto */
+    font-weight: bold; /* Estilo de fuente en negrita */
+  }
