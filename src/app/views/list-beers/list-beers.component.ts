@@ -17,9 +17,14 @@ export class ListBeersComponent implements OnInit {
   constructor(private store: Store<RootState>) {}
 
   ngOnInit(): void {
-    this.store.dispatch(BeersActions.getBeers());
+    this.store.dispatch(BeersActions.getBeers({ page: 1 }));
     this.beers$.subscribe((response) => {
       console.log('cervezas', response);
     });
+  }
+
+  public trackByBeers(_: number, store: Beer): number {
+    return store.id;
+    // trackBy: trackByBeers
   }
 }

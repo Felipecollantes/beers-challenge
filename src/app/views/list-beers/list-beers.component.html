@@ -1,5 +1,5 @@
 <custom-input></custom-input>
-<div class="card-container">
+<!-- <custom-card></custom-card>
   <custom-card></custom-card>
   <custom-card></custom-card>
   <custom-card></custom-card>
@@ -25,6 +25,9 @@
   <custom-card></custom-card>
   <custom-card></custom-card>
   <custom-card></custom-card>
-  <custom-card></custom-card>
-  <custom-card></custom-card>
-</div>
+  <custom-card></custom-card> -->
+<cdk-virtual-scroll-viewport [itemSize]="20" class="list-content">
+  <div class="card-container">
+    <custom-card *cdkVirtualFor="let beer of beers$ | async; trackBy: trackByBeers" [beer]="beer"></custom-card>
+  </div>
+</cdk-virtual-scroll-viewport>

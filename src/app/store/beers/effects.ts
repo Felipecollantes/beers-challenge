@@ -13,8 +13,8 @@ export class BeerEffects {
   public getBeers$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
       ofType(BeerActions.getBeers),
-      mergeMap(() =>
-        this.getBeers().pipe(
+      mergeMap(({ page }) =>
+        this.getBeers(page).pipe(
           map((response) => {
             return BeerActions.getBeersSuccess({ response });
           }),
@@ -26,7 +26,7 @@ export class BeerEffects {
 
   constructor(private readonly actions$: Actions, private http: HttpClient) {}
 
-  getBeers(): Observable<Beer[]> {
-    return this.http.get<Beer[]>(`${environment.api_url}beers/1`);
+  getBeers(page: number = 1, perPage: number = 20): Observable<Beer[]> {
+    return this.http.get<Beer[]>(`${environment.api_url}beers/?page=${page}&per_page=${perPage}`);
   }
 }
