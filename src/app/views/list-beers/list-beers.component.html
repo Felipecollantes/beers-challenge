@@ -1,32 +1,8 @@
-<custom-input></custom-input>
-<!-- <custom-card></custom-card>
-  <custom-card></custom-card>
-  <custom-card></custom-card>
-  <custom-card></custom-card>
-  <custom-card></custom-card>
-  <custom-card></custom-card>
-  <custom-card></custom-card>
-  <custom-card></custom-card>
-  <custom-card></custom-card>
-  <custom-card></custom-card>
-  <custom-card></custom-card>
-  <custom-card></custom-card>
-  <custom-card></custom-card>
-  <custom-card></custom-card>
-  <custom-card></custom-card>
-  <custom-card></custom-card>
-  <custom-card></custom-card>
-  <custom-card></custom-card>
-  <custom-card></custom-card>
-  <custom-card></custom-card>
-  <custom-card></custom-card>
-  <custom-card></custom-card>
-  <custom-card></custom-card>
-  <custom-card></custom-card>
-  <custom-card></custom-card>
-  <custom-card></custom-card>
-  <custom-card></custom-card> -->
-<cdk-virtual-scroll-viewport [itemSize]="20" class="list-content">
+<form [formGroup]="form">
+  <custom-input [controlName]="'search'" [form]="form" (param)="findByParam($event)"></custom-input>
+</form>
+<loading *ngIf="loading$ | async"></loading>
+<cdk-virtual-scroll-viewport *ngIf="!(loading$ | async)" [itemSize]="20" class="list-content">
   <div class="card-container">
     <custom-card *cdkVirtualFor="let beer of beers$ | async; trackBy: trackByBeers" [beer]="beer"></custom-card>
   </div>

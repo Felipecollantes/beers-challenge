@@ -7,6 +7,7 @@ export const reducer = createReducer(
 
   on(
     BeerActions.getBeers,
+    BeerActions.getBeersByParam,
     (state): BeerState => ({
       ...state,
       loading: true,
