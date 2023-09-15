@@ -30,7 +30,6 @@ export class BeerEffects {
       mergeMap(({ param }) =>
         this.searchAll(param).pipe(
           map((response) => {
-            console.log('response', response);
             return BeerActions.getBeersSuccess({ response });
           }),
           catchError(() => of(BeerActions.getBeersFailure()))
